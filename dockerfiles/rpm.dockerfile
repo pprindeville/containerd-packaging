@@ -30,6 +30,8 @@ ARG MD2MAN_VERSION=v2.0.1
 RUN go install github.com/cpuguy83/go-md2man/v2@${MD2MAN_VERSION}
 
 FROM ${BUILD_IMAGE} AS redhat-base
+# CentOS is deprecated and has moved from "mirror" to "vault"
+RUN sed -i.orig '/^#baseurl=/{ s/^#baseurl=/baseurl=/; s/mirror\.centos\.org/vault.centos.org/ }' /etc/yum.repos.d/CentOS-Linux-*.repo
 RUN yum install -y yum-utils rpm-build git
 
 FROM redhat-base AS rhel-base
