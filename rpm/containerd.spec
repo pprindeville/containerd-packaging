@@ -95,6 +95,8 @@ system: image transfer and storage, container execution and supervision,
 low-level storage and network attachments, etc.
 
 
+%debug_package
+
 %prep
 rm -rf %{_topdir}/BUILD/
 if [ ! -d %{_topdir}/SOURCES/containerd ]; then

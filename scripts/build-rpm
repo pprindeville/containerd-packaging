@@ -61,7 +61,7 @@ ARCH="$(uname -m)"
 DEST_DIR="/build/${DIST_ID}/${DIST_VERSION}/${ARCH}/"
 (
 	set -x
-	rpmbuild -ba "${SPEC_FILE}"
+	rpmbuild --with debug -ba "${SPEC_FILE}"
 	mkdir -p "${DEST_DIR}"
 	mv -v RPMS/*/*.rpm "${DEST_DIR}"
 	mv -v SRPMS/*.rpm "${DEST_DIR}"
